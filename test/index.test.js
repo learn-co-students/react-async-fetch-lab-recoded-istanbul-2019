@@ -1,24 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { configure, shallow, mount } from 'enzyme';
+import { configure, mount } from 'enzyme';
 import { expect } from 'chai';
 import { spy, stub, useFakeTimers } from 'sinon'
 const fetchMock = require('fetch-mock')
 import Adapter from 'enzyme-adapter-react-16';
+//import ShallowRenderer from 'react-test-renderer/shallow'; // ES6
+import { shallow } from 'enzyme';
+import 'regenerator-runtime/runtime';
+import "babel-polyfill";
 
 configure({ adapter: new Adapter() });
 
 import App from '../src/App';
 
 
-
+let appWrapper;
+let fetchSpy;
 describe('<App />', () => {
-  let appWrapper
-  let fetchSpy
+
 
   before(() => {
     global.fetch = require('node-fetch')
-    fetchMock.get('*', {people: [{name:"Stimpy"}]})
+    fetchMock.get('*', { people: [{ name: "Stimpy" }] })
     fetchSpy = spy(global, "fetch")
 
   })
