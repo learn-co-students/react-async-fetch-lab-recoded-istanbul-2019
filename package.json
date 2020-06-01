@@ -17,6 +17,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
+    "regenerator-runtime": "^0.13.5",
     "webpack": "^3.11.0"
   },
   "scripts": {
@@ -36,5 +37,10 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "mocha": "^5.2.0",
     "sinon": "^6.1.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./test/index.test.js"
+    ]
   }
 }
